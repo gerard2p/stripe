@@ -1,3 +1,5 @@
+import {PaymentMethod as SPaymentMethod,  Card as SCard, PaymentRequest, PaymentRequestOptions, StripeElements, StripeElementsOptions } from "@stripe/stripe-js";
+
 declare module '@capacitor/core' {
   interface PluginRegistry {
     Stripe: StripePlugin;
@@ -184,6 +186,8 @@ export interface ConfirmSetupIntentResponse {
 
 export interface StripePlugin {
   /* Core */
+  elements(options?: StripeElementsOptions): Promise<StripeElements>
+  paymentRequest(request: PaymentRequestOptions): Promise<PaymentRequest>;
   setPublishableKey(opts: SetPublishableKeyOptions): Promise<void>;
 
   createCardToken(card: CardTokenRequest): Promise<CardTokenResponse>;
@@ -299,9 +303,13 @@ export interface Card {
    * Id exists for cards but not payment methods
    */
   id?: string;
-  brand: CardBrand;
+  brand: CardBrand | string;
   country: string;
-  cvc_check: any;
+  /**
+   * If a CVC was provided, results of the check, one of `pass`, `fail`, `unavailable`, or `unchecked`.
+   */
+  cvc_check?: string | null;
+  checks?: SPaymentMethod.Card.Checks;
   three_d_secure_usage?: {
     supported: boolean;
   }
@@ -318,7 +326,7 @@ export interface Card {
   address_state?: string;
   address_zip?: string;
   address_zip_check?: string;
-  dynamic_last4: any;
+  dynamic_last4?: any;
   fingerprint?: string;
   metadata?: any;
   name?: string;

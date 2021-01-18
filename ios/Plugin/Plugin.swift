@@ -28,6 +28,14 @@ public class StripePlugin: CAPPlugin {
         call.success()
     }
 
+    @obj func paymentRequest(_ call: CAPPluginCall) {
+        call.success()
+    }
+
+    @obj func elements(_ call: CAPPluginCall) {
+        call.success()
+    }
+
     @objc func validateCardNumber(_ call: CAPPluginCall) {
         let state = STPCardValidator.validationState(
                 forNumber: call.getString("number"),

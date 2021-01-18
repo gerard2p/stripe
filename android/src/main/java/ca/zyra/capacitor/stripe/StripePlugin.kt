@@ -44,6 +44,16 @@ class Stripe : Plugin() {
     }
 
     @PluginMethod
+    fun paymentRequest(call: PluginCall) {
+        call.resolve(null)
+    }
+
+    @PluginMethod
+    fun elements(call: PluginCall) {
+        call.resolve(null)
+    }
+
+    @PluginMethod
     fun identifyCardBrand(call: PluginCall) {
         val res = JSObject()
         res.putOpt("brand", buildCard(call.data).build().brand)
