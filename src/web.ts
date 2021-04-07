@@ -28,7 +28,7 @@ import {
   ValidateExpiryDateOptions,
   ValidityResponse,
 } from './definitions';
-import { ConfirmCardPaymentData, PaymentRequestOptions, Stripe, StripeElementsOptions } from '@stripe/stripe-js'
+import { PaymentRequest, ConfirmCardPaymentData, PaymentRequestOptions, Stripe, StripeElements, StripeElementsOptions } from '@stripe/stripe-js'
 
 function flatten(json: any, prefix?: string, omit?: string[]): any {
   let obj: any = {};
@@ -126,10 +126,10 @@ export class StripePluginWeb extends WebPlugin implements StripePlugin {
       platforms: ['web'],
     });
   }
-  async elements(options?: StripeElementsOptions) {
+  async elements(options?: StripeElementsOptions): Promise<StripeElements> {
     return this.stripe ? this.stripe.elements(options) : null;
   }
-  async paymentRequest(request: PaymentRequestOptions) {
+  async paymentRequest(request: PaymentRequestOptions): Promise<PaymentRequest> {
     return this.stripe ? this.stripe.paymentRequest(request) : null;
   }
 
