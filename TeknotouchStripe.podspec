@@ -1,6 +1,6 @@
 
   Pod::Spec.new do |s|
-    s.name = 'CapacitorCommunityStripe'
+    s.name = 'TeknotouchStripe'
     s.version = '0.0.1'
     s.summary = 'Stripe Mobile SDK Wrapper for Capacitor'
     s.license = 'MIT'
