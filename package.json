@@ -1,6 +1,6 @@
 {
   "name": "@teknotouch/stripe",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "Stripe SDK bindings for Capacitor Applications",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -39,7 +39,7 @@
     "dist/",
     "ios/",
     "android/",
-    "CapacitorCommunityStripe.podspec"
+    "TeknotouchStripe.podspec"
   ],
   "keywords": [
     "capacitor",
