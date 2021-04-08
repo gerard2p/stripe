@@ -28,11 +28,11 @@ public class StripePlugin: CAPPlugin {
         call.success()
     }
 
-    @obj func paymentRequest(_ call: CAPPluginCall) {
+    @objc func paymentRequest(_ call: CAPPluginCall) {
         call.success()
     }
 
-    @obj func elements(_ call: CAPPluginCall) {
+    @objc func elements(_ call: CAPPluginCall) {
         call.success()
     }
 
